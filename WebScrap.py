@@ -31,7 +31,8 @@ def Pesquisa(url, pesquisa):
 
     for iten in itens: 
         link = iten.find_element(By.TAG_NAME,'a').get_attribute('href')
-        nome = iten.find_element(By.TAG_NAME,'a').text
+        nome_aux = iten.find_element(By.CLASS_NAME,'poly-component__title-wrapper')
+        nome = nome_aux.find_element(By.TAG_NAME,'a').text
         preco_new_aux = iten.find_element(By.CLASS_NAME,'poly-price__current')    
         preco_new = preco_new_aux.find_element(By.CLASS_NAME,'andes-money-amount__fraction').text
 
@@ -63,7 +64,7 @@ def Pesquisa(url, pesquisa):
         preco_new_list.append(preco_new)
         desconto_list.append(desconto)
         link_list.append(link)
-        nome_list.append(nome[:20])
+        nome_list.append(nome)
 
         # print('preço full: '+ preco_old + '  Desconto: ' + desconto + '  preço com desconto: ' + preco_new)
  
